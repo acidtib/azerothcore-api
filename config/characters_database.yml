@@ -1,0 +1,18 @@
+default: &default
+  adapter: mysql2
+  encoding: utf8
+  pool: 10
+  
+development:
+  <<: *default
+  username: <%= ENV['CHARACTER_DATABASE_USERNAME'] %>
+  password: <%= ENV['CHARACTER_DATABASE_PASSWORD'] %>
+  host: <%= ENV['CHARACTER_DATABASE_HOST'] %>
+  database: <%= ENV['CHARACTER_DATABASE'] %>
+
+production:
+  <<: *default
+  username: <%= ENV['CHARACTER_DATABASE_USERNAME'] %>
+  password: <%= ENV['CHARACTER_DATABASE_PASSWORD'] %>
+  host: <%= ENV['CHARACTER_DATABASE_HOST'] %>
+  database: <%= ENV['CHARACTER_DATABASE'] %>

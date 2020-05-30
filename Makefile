@@ -1,2 +1,2 @@
 run:
-	rails s
+	foreman start -f Procfile.dev

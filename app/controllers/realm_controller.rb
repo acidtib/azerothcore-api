@@ -3,7 +3,7 @@ class RealmController < ApplicationController
   def info
     realms = Auth::Realm.all
 
-    json_response(realms)
+    render json: realms
   end
 
 end
