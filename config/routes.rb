@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
 
+  get '/account', to: 'account#account'
   scope "/account" do
     post '/login', to: 'account#login'
     post '/register', to: 'account#register'
@@ -13,6 +14,9 @@ Rails.application.routes.draw do
     get '/all', to: 'characters#all'
     get '/get/:guid', to: 'characters#get'
   end
+
+  get '/*a', to: 'application#not_found'
+  post '/*a', to: 'application#not_found'
 
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end

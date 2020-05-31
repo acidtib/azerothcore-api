@@ -1,4 +1,5 @@
 class AccountController < ApplicationController
+  before_action :authorize_request, only: [:account]
 
   def login
     username = params["account"]["username"].upcase
@@ -22,7 +23,14 @@ class AccountController < ApplicationController
     end
     
     if status == 200
-      json_response(account)
+      token = JsonWebToken.encode(user_id: account.id)
+      time = Time.now + 24.hours.to_i
+
+      json_response({ 
+        token: token, 
+        exp: time.strftime("%m-%d-%Y %H:%M"),
+        username: account.username 
+      })
     else
       json_response({alert: result}, status)
     end
@@ -55,11 +63,24 @@ class AccountController < ApplicationController
       )
 
       if new_account
-        json_response({notice: "succesfully register"})
+        token = JsonWebToken.encode(user_id: new_account.id)
+        time = Time.now + 24.hours.to_i
+
+        json_response({ 
+          token: token, 
+          exp: time.strftime("%m-%d-%Y %H:%M"),
+          username: new_account.username 
+        })
       else
         json_response({notice: "try again"}, 500)
       end
     end
+  end
+
+  def account
+    characters = Characters::Characters.where(account: @current_user.id)
+
+    json_response(characters)
   end
 
 end
