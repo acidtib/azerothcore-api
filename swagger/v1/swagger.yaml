@@ -71,6 +71,19 @@ paths:
               - username
               - password
               - email
+  "/realm/info":
+    get:
+      summary: Realm Info
+      tags:
+      - Realm
+      parameters: []
+      responses:
+        '200':
+          description: success
+          content: {}
+        '500':
+          description: error
+          content: {}
 servers:
 - url: http://{defaultHost}
   variables:
