@@ -4,7 +4,7 @@ class AccountController < ApplicationController
   def login
     username = params["account"]["username"].upcase
     password = params["account"]["password"].upcase
-    status = 200
+    status = 201
 
     account = Auth::Account.find_by_username(username)
 
@@ -22,7 +22,7 @@ class AccountController < ApplicationController
       result = "no account found with that username"
     end
     
-    if status == 200
+    if status == 201
       token = JsonWebToken.encode(user_id: account.id)
       time = Time.now + 24.hours.to_i
 
@@ -32,7 +32,7 @@ class AccountController < ApplicationController
         username: account.username 
       })
     else
-      json_response({alert: result}, status)
+      json_response({error: result}, status)
     end
   end
 
@@ -40,6 +40,7 @@ class AccountController < ApplicationController
     username = params["account"]["username"].upcase
     email = params["account"]["email"]
     password = params["account"]["password"].upcase
+    status = 201
 
     check_username = Auth::Account.find_by_username(username)
     
@@ -47,11 +48,13 @@ class AccountController < ApplicationController
 
     if check_username or check_email
       if check_username
-        json_response({alert: "username is taken"}, 403)
+        status = 403
+        result = "username is taken"
       end
 
       if check_email
-        json_response({alert: "email is taken"}, 403)
+        status = 404
+        result = "email is taken"
       end
     else
       hashed_password = Digest::SHA1.hexdigest("#{username}:#{password}").upcase
@@ -70,9 +73,9 @@ class AccountController < ApplicationController
           token: token, 
           exp: time.strftime("%m-%d-%Y %H:%M"),
           username: new_account.username 
-        })
+        }, 201)
       else
-        json_response({notice: "try again"}, 500)
+        json_response({error: result}, status)
       end
     end
   end

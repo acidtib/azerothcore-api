@@ -1,0 +1,78 @@
+---
+openapi: 3.0.1
+info:
+  title: API V1
+  version: v1
+paths:
+  "/account/login":
+    post:
+      summary: Login an account
+      tags:
+      - Account
+      parameters: []
+      responses:
+        '200':
+          description: login successful
+          content: {}
+        '401':
+          description: wrong password
+          content: {}
+        '404':
+          description: account not found
+          content: {}
+        '500':
+          description: error
+          content: {}
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                username:
+                  type: string
+                password:
+                  type: string
+              required:
+              - username
+              - password
+  "/account/register":
+    post:
+      summary: Register an account
+      tags:
+      - Account
+      parameters: []
+      responses:
+        '201':
+          description: account created
+          content: {}
+        '403':
+          description: username is taken
+          content: {}
+        '404':
+          description: email is taken
+          content: {}
+        '500':
+          description: error
+          content: {}
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                username:
+                  type: string
+                password:
+                  type: string
+                email:
+                  type: string
+              required:
+              - username
+              - password
+              - email
+servers:
+- url: http://{defaultHost}
+  variables:
+    defaultHost:
+      default: localhost:5000
