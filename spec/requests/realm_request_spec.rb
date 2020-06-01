@@ -5,20 +5,48 @@ RSpec.describe "Realm", type: :request do
 
     get 'Realm Info' do
       tags 'Realm'
-      parameter name: :success, in: :body, schema: {
-        type: :object,
-        properties: {
-          id: { type: :integer },
-          name: { type: :string },
-          address: { type: :string },
-          timezone: { type: :integer },
-          population: { type: :string },
-          gamebuild: { type: :string }
-        }
-      }
+      produces 'application/json'
 
       response '200', 'success' do
-        # let(:success) { }
+        examples 'application/json' => {
+          id: 1,
+          title: 'Hello world!',
+          content: '...'
+        }
+        run_test!
+      end
+
+      response '500', 'error' do
+        let(:error) { { } }
+        run_test!
+      end
+    end
+  end
+
+  path '/realm/uptime' do
+
+    get 'Realm Uptime' do
+      tags 'Realm'
+      produces 'application/json'
+
+      response '200', 'success' do
+        run_test!
+      end
+
+      response '500', 'error' do
+        let(:error) { { } }
+        run_test!
+      end
+    end
+  end
+
+  path '/realm/characters' do
+
+    get 'Realm Characters' do
+      tags 'Realm'
+      produces 'application/json'
+
+      response '200', 'success' do
         run_test!
       end
 

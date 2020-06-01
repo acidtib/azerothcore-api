@@ -11,6 +11,8 @@ Rails.application.routes.draw do
 
   scope "/realm" do
     get '/info', to: 'realm#info'
+    get '/uptime', to: 'realm#uptime'
+    get '/characters', to: 'realm#characters'
   end
 
   namespace :characters do

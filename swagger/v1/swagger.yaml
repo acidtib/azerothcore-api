@@ -76,7 +76,35 @@ paths:
       summary: Realm Info
       tags:
       - Realm
-      parameters: []
+      responses:
+        '200':
+          description: success
+          examples:
+            application/json:
+              id: 1
+              title: Hello world!
+              content: "..."
+          content: {}
+        '500':
+          description: error
+          content: {}
+  "/realm/uptime":
+    get:
+      summary: Realm Uptime
+      tags:
+      - Realm
+      responses:
+        '200':
+          description: success
+          content: {}
+        '500':
+          description: error
+          content: {}
+  "/realm/characters":
+    get:
+      summary: Realm Characters
+      tags:
+      - Realm
       responses:
         '200':
           description: success
