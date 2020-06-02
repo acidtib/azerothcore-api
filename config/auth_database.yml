@@ -5,14 +5,8 @@ default: &default
   
 development:
   <<: *default
-  username: <%= ENV['AUTH_DATABASE_USERNAME'] %>
-  password: <%= ENV['AUTH_DATABASE_PASSWORD'] %>
-  host: <%= ENV['AUTH_DATABASE_HOST'] %>
-  database: <%= ENV['AUTH_DATABASE'] %>
+  url: <%= ENV['AUTH_DATABASE_URL'] %>
 
 production:
   <<: *default
-  username: <%= ENV['AUTH_DATABASE_USERNAME'] %>
-  password: <%= ENV['AUTH_DATABASE_PASSWORD'] %>
-  host: <%= ENV['AUTH_DATABASE_HOST'] %>
-  database: <%= ENV['AUTH_DATABASE'] %>
+  url: <%= ENV['AUTH_DATABASE_URL'] %>

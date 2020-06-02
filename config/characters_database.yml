@@ -5,14 +5,8 @@ default: &default
   
 development:
   <<: *default
-  username: <%= ENV['CHARACTER_DATABASE_USERNAME'] %>
-  password: <%= ENV['CHARACTER_DATABASE_PASSWORD'] %>
-  host: <%= ENV['CHARACTER_DATABASE_HOST'] %>
-  database: <%= ENV['CHARACTER_DATABASE'] %>
+  url: <%= ENV['CHARACTER_DATABASE_URL'] %>
 
 production:
   <<: *default
-  username: <%= ENV['CHARACTER_DATABASE_USERNAME'] %>
-  password: <%= ENV['CHARACTER_DATABASE_PASSWORD'] %>
-  host: <%= ENV['CHARACTER_DATABASE_HOST'] %>
-  database: <%= ENV['CHARACTER_DATABASE'] %>
+  url: <%= ENV['CHARACTER_DATABASE_URL'] %>
