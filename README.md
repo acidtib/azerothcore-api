@@ -20,6 +20,11 @@ Copy the configuration file `.env-example` file into `.env` and update it.
 $ cp .env-example .env
 ```
 
+Setup local database:
+```
+$ rake db:setup
+```
+
 Run the project:
 ```
 $ foreman start -f Procfile.dev
