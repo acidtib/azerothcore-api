@@ -1,5 +1,9 @@
 Rails.application.routes.draw do
 
+  get '/news', to: 'news#all'
+  post '/news/get', to: 'news#get'
+  post '/news/create', to: 'news#create'
+
   mount Rswag::Ui::Engine => '/api-docs'
   mount Rswag::Api::Engine => '/api-docs'
   

@@ -106,6 +106,67 @@ paths:
                   type: integer
               required:
               - guid
+  "/news/create":
+    post:
+      summary: Create New Article
+      tags:
+      - local
+      parameters: []
+      responses:
+        '201':
+          description: success
+          content: {}
+        '500':
+          description: error
+          content: {}
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                title:
+                  type: string
+                content:
+                  type: string
+              required:
+              - title
+              - content
+  "/news/get":
+    post:
+      summary: Get single Article
+      tags:
+      - local
+      parameters: []
+      responses:
+        '200':
+          description: success
+          content: {}
+        '500':
+          description: error
+          content: {}
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                slug:
+                  type: string
+              required:
+              - slug
+  "/news":
+    get:
+      summary: Get all News Articles
+      tags:
+      - local
+      responses:
+        '200':
+          description: success
+          content: {}
+        '500':
+          description: error
+          content: {}
   "/realm/info":
     get:
       summary: Realm Info
