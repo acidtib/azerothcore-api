@@ -3,6 +3,10 @@
 
 A set of RESTful APIs for [AzerothCore](https://azerothcore.org).
 
+API Swagger demo: [https://azerothcore-api.herokuapp.com/api-docs](https://azerothcore-api.herokuapp.com/api-docs)
+
+username: `admin`  password: `password`
+
 ### Requirements
 
 - Ruby
