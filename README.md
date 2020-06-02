@@ -31,3 +31,7 @@ $ foreman start -f Procfile.dev
 ```
 
 Now you can locally access to the API routes through [http://localhost:5000](http://localhost:5000).
+
+### API Swagger Docs
+
+You can use Swagger to test the endpoints [http://localhost:5000/api-docs](http://localhost:5000/api-docs)
