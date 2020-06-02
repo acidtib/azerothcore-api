@@ -22,7 +22,7 @@ jobs:
       mysql:
         image: mysql:5.7
         env:
-          MYSQL_USER: 'root'
+          MYSQL_USER: 'testuser'
           MYSQL_PASSWORD: 'password'
         ports:
         - 3306
@@ -48,8 +48,8 @@ jobs:
     - name: Verify MySQL connection from host
       run: |
         sudo apt-get install -y mysql-client libmysqlclient-dev
-        mysql --host 127.0.0.1 --port ${{ job.services.mysql.ports[3306] }} -uroot -ppassword -e "SHOW GRANTS FOR 'root'@'localhost'"
-        mysql_tzinfo_to_sql /usr/share/zoneinfo | mysql --host 127.0.0.1 --port ${{ job.services.mysql.ports[3306] }} -uroot -ppassword mysql
+        mysql --host 127.0.0.1 --port ${{ job.services.mysql.ports[3306] }} -utestuser -ppassword -e "SHOW GRANTS FOR 'testuser'@'localhost'"
+        mysql_tzinfo_to_sql /usr/share/zoneinfo | mysql --host 127.0.0.1 --port ${{ job.services.mysql.ports[3306] }} -utestuser -ppassword mysql
     
     - name: Bundle Install and Create DB
       env:
@@ -67,8 +67,8 @@ jobs:
 
     - name: Run tests
       env:
-        AUTH_DATABASE_URL: mysql2://root:password@10.0.0.210:3306/acore_auth
-        CHARACTER_DATABASE_URL: mysql2://root:password@10.0.0.210:3306/acore_characters
+        AUTH_DATABASE_URL: mysql2://testuser:password@localhost:3306/acore_auth
+        CHARACTER_DATABASE_URL: mysql2://testuser:password@localhost:3306/acore_characters
         DB_PORT: ${{ job.services.mysql.ports[3306] }} # get randomly assigned published port
         RAILS_ENV: test
       run: |
