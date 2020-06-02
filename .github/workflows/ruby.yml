@@ -47,7 +47,6 @@ jobs:
           # tell Rails to use proper port for MySQL
           DB_PORT: ${{ job.services.mysql.ports[3306] }}
         run: |
-          cp .env-example .env
           gem install bundler --no-ri --no-rdoc
           bundle config path vendor/bundle
           bundle install --jobs 4 --retry 3 --path vendor/bundle
