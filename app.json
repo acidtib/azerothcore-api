@@ -1,0 +1,23 @@
+{
+  "name": "azerothcore-api",
+  "description": "A set of RESTful APIs for AzerothCore.",
+  "addons": ["cleardb:ignite"],
+  "env": {
+    "AUTH_DATABASE_URL": "mysql2://root:password@localhost/acore_auth",
+    "CHARACTER_DATABASE_URL": "mysql2://root:password@localhost/acore_characters",
+    "LANG": "en_US.UTF-8",
+    "RACK_ENV": "production",
+    "RAILS_ENV": "production",
+    "RAILS_LOG_TO_STDOUT": "enabled",
+    "RAILS_SERVE_STATIC_FILES": "enabled",
+    "SECRET_KEY_BASE": {
+      "description": "This gets generated",
+      "generator": "secret"
+    },
+    "SWAGGER_PASSWORD": "password",
+    "SWAGGER_USERNAME": "admin"
+  },
+  "scripts": {
+    "postdeploy": "bundle exec rake db:migrate"
+  }
+}

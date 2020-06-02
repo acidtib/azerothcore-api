@@ -209,10 +209,6 @@ paths:
           description: error
           content: {}
 servers:
-- url: http://{defaultHost}
-  variables:
-    defaultHost:
-      default: localhost:5000
 - url: "{defaultHost}"
   variables:
     defaultHost:

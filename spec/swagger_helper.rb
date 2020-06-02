@@ -24,18 +24,10 @@ RSpec.configure do |config|
       paths: {},
       servers: [
         {
-          url: 'http://{defaultHost}',
-          variables: {
-            defaultHost: {
-              default: 'localhost:5000'
-            }
-          }
-        },
-        {
           url: '{defaultHost}',
           variables: {
             defaultHost: {
-              default: ENV["API_HOST"]
+              default: 'http://localhost:5000'
             }
           }
         }
