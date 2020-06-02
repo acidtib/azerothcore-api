@@ -4,7 +4,7 @@ RSpec.describe "Accounts", type: :request do
   path '/account/login' do
 
     post 'Login an account' do
-      tags 'Account'
+      tags 'acore_auth'
       consumes 'application/json'
       parameter name: :account, in: :body, schema: {
         type: :object,
@@ -54,7 +54,7 @@ RSpec.describe "Accounts", type: :request do
   path '/account/register' do
 
     post 'Register an account' do
-      tags 'Account'
+      tags 'acore_auth'
       consumes 'application/json'
       parameter name: :account, in: :body, schema: {
         type: :object,

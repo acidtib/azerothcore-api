@@ -17,7 +17,7 @@ Rails.application.routes.draw do
 
   namespace :characters do
     get '/all', to: 'characters#all'
-    get '/get/:guid', to: 'characters#get'
+    post '/get', to: 'characters#get'
   end
 
   get '/*a', to: 'application#not_found'

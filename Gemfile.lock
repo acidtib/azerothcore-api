@@ -156,6 +156,8 @@ GEM
       actionpack (>= 3.1, < 7.0)
       railties (>= 3.1, < 7.0)
     ruby_dep (1.5.0)
+    safe_attributes (1.0.10)
+      activerecord (>= 3.0.0)
     spring (2.1.0)
     spring-watcher-listen (2.0.1)
       listen (>= 2.7, < 4.0)
@@ -193,6 +195,7 @@ DEPENDENCIES
   rswag-api
   rswag-specs
   rswag-ui
+  safe_attributes
   spring
   spring-watcher-listen (~> 2.0.0)
   tzinfo-data

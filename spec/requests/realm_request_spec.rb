@@ -4,7 +4,7 @@ RSpec.describe "Realm", type: :request do
   path '/realm/info' do
 
     get 'Realm Info' do
-      tags 'Realm'
+      tags 'acore_auth'
       produces 'application/json'
 
       response '200', 'success' do
@@ -26,7 +26,7 @@ RSpec.describe "Realm", type: :request do
   path '/realm/uptime' do
 
     get 'Realm Uptime' do
-      tags 'Realm'
+      tags 'acore_auth'
       produces 'application/json'
 
       response '200', 'success' do
@@ -43,7 +43,7 @@ RSpec.describe "Realm", type: :request do
   path '/realm/characters' do
 
     get 'Realm Characters' do
-      tags 'Realm'
+      tags 'acore_auth'
       produces 'application/json'
 
       response '200', 'success' do
