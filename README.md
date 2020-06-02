@@ -1,24 +1,28 @@
-# README
+## azerothcore-api
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+A set of RESTful APIs for [AzerothCore](https://azerothcore.org).
 
-Things you may want to cover:
+### Requirements
 
-* Ruby version
+- Ruby
+- MySQL
+- AzerothCore database
 
-* System dependencies
+### Installation
 
-* Configuration
+```
+$ bundle install
+```
 
-* Database creation
+Copy the configuration file `.env-example` file into `.env` and update it.
 
-* Database initialization
+```
+$ cp .env-example .env
+```
 
-* How to run the test suite
+Run the project:
+```
+$ foreman start -f Procfile.dev
+```
 
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+Now you can locally access to the API routes through [http://localhost:5000](http://localhost:5000).
