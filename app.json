@@ -1,6 +1,7 @@
 {
   "name": "azerothcore-api",
   "description": "A set of RESTful APIs for AzerothCore.",
+  "repository": "https://github.com/arubinofaux/azerothcore-api",
   "addons": ["cleardb:ignite"],
   "env": {
     "AUTH_DATABASE_URL": "mysql2://root:password@localhost/acore_auth",

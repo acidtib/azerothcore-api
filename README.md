@@ -1,4 +1,5 @@
 ## azerothcore-api
+[![Deploy](https://www.herokucdn.com/deploy/button.svg)](https://heroku.com/deploy?template=https://github.com/arubinofaux/azerothcore-api)
 
 A set of RESTful APIs for [AzerothCore](https://azerothcore.org).
 
