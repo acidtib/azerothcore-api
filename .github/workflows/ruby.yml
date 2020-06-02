@@ -40,10 +40,18 @@ jobs:
           restore-keys: |
             ${{ runner.os }}-gems-:  
       
-      - name: Verify MySQL connection from host
+      - name: Bundle Install and Create DB
+        env:
+          RAILS_ENV: test
+          DB_PASSWORD: password
+          # tell Rails to use proper port for MySQL
+          DB_PORT: ${{ job.services.mysql.ports[3306] }}
         run: |
-          sudo apt-get install -y mysql-client libmysqlclient-dev
-          mysql --host 127.0.0.1 --port ${{ job.services.mysql.ports[3306] }} -uroot -ppassword -e "SHOW GRANTS FOR 'root'@'localhost'"
-          mysql_tzinfo_to_sql /usr/share/zoneinfo | mysql --host 127.0.0.1 --port ${{ job.services.mysql.ports[3306] }} -uroot -ppassword mysql
+          cp .env-example .env
+          gem install bundler --no-ri --no-rdoc
+          bundle config path vendor/bundle
+          bundle install --jobs 4 --retry 3 --path vendor/bundle
+          # create DB for Rails 5.x
+          bin/rails db:setup
 
    
