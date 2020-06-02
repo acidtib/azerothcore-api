@@ -213,3 +213,7 @@ servers:
   variables:
     defaultHost:
       default: localhost:5000
+- url: "{defaultHost}"
+  variables:
+    defaultHost:
+      default: http://localhost:5000

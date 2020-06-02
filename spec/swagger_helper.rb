@@ -30,6 +30,14 @@ RSpec.configure do |config|
               default: 'localhost:5000'
             }
           }
+        },
+        {
+          url: '{defaultHost}',
+          variables: {
+            defaultHost: {
+              default: ENV["API_HOST"]
+            }
+          }
         }
       ]
     }
