@@ -26,8 +26,8 @@ jobs:
     # uses: ruby/setup-ruby@v1
       uses: ruby/setup-ruby@ec106b438a1ff6ff109590de34ddc62c540232e0
       with:
-        ruby-version: 2.6
+        ruby-version: 2.6.6
     - name: Install dependencies
       run: bundle install
     - name: Run tests
-      run: RAILS_ENV=test rails rswag
+      run: rake rswag
