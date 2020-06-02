@@ -29,22 +29,16 @@ RSpec.describe "News", type: :request do
     end
   end
 
-  path '/news/get' do
+  path '/news/get/{slug}' do
 
-    post 'Get single Article' do
+    get 'Get single Article' do
       tags 'local'
       produces 'application/json'
-      consumes 'application/json'
-      parameter name: :article, in: :body, schema: {
-        type: :object,
-        properties: {
-          slug: { type: :string }
-        },
-        required: [ 'slug' ]
-      }
+
+      parameter name: :slug, in: :path, type: :string
       
       response '200', 'success' do
-        let(:character) { { guid: 1 } }
+        let(:ok) { { slug: "string" } }
         run_test!
       end
 

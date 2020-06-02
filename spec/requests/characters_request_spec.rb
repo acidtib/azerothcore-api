@@ -19,20 +19,29 @@ RSpec.describe "Characters", type: :request do
     end
   end
 
-  path '/characters/get/' do
+  path '/characters/get/{params}' do
 
-    post 'Get a single Character' do
+    get 'Get a single Character by guid or name' do
       tags 'acore_characters'
-      consumes 'application/json'
-      parameter name: :character, in: :body, schema: {
-        type: :object,
-        properties: {
-          guid: { type: :integer }
-        },
-        required: [ 'guid' ]
-      }
+      produces 'application/json'
+
+      parameter name: :params, in: :path, type: :string
+
       response '200', 'success' do
-        let(:character) { { guid: 1 } }
+        schema type: :object,
+          properties: {
+            guid: { type: :integer },
+            class: { type: :integer },
+            account: { type: :integer },
+            name: { type: :string },
+            race: { type: :integer },
+            gender: { type: :integer },
+            level: { type: :integer },
+            xp: { type: :integer },
+            money: { type: :integer }
+          }
+
+        let(:character) { { params: 1 } }
         run_test!
       end
 
@@ -41,6 +50,7 @@ RSpec.describe "Characters", type: :request do
         run_test!
       end
     end
+    
   end
 
 end

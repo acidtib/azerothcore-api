@@ -1,7 +1,7 @@
 Rails.application.routes.draw do
 
   get '/news', to: 'news#all'
-  post '/news/get', to: 'news#get'
+  get '/news/get/:slug', to: 'news#get'
   post '/news/create', to: 'news#create'
 
   mount Rswag::Ui::Engine => '/api-docs'
@@ -21,7 +21,7 @@ Rails.application.routes.draw do
 
   namespace :characters do
     get '/all', to: 'characters#all'
-    post '/get', to: 'characters#get'
+    get '/get/:params', to: 'characters#get'
   end
 
   get '/*a', to: 'application#not_found'

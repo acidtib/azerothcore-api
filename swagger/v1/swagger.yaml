@@ -83,29 +83,46 @@ paths:
         '500':
           description: error
           content: {}
-  "/characters/get/":
-    post:
-      summary: Get a single Character
+  "/characters/get/{params}":
+    get:
+      summary: Get a single Character by guid or name
       tags:
       - acore_characters
-      parameters: []
+      parameters:
+      - name: params
+        in: path
+        required: true
+        schema:
+          type: string
       responses:
         '200':
           description: success
-          content: {}
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  guid:
+                    type: integer
+                  class:
+                    type: integer
+                  account:
+                    type: integer
+                  name:
+                    type: string
+                  race:
+                    type: integer
+                  gender:
+                    type: integer
+                  level:
+                    type: integer
+                  xp:
+                    type: integer
+                  money:
+                    type: integer
         '500':
           description: error
           content: {}
-      requestBody:
-        content:
-          application/json:
-            schema:
-              type: object
-              properties:
-                guid:
-                  type: integer
-              required:
-              - guid
   "/news/create":
     post:
       summary: Create New Article
@@ -132,12 +149,17 @@ paths:
               required:
               - title
               - content
-  "/news/get":
-    post:
+  "/news/get/{slug}":
+    get:
       summary: Get single Article
       tags:
       - local
-      parameters: []
+      parameters:
+      - name: slug
+        in: path
+        required: true
+        schema:
+          type: string
       responses:
         '200':
           description: success
@@ -145,16 +167,6 @@ paths:
         '500':
           description: error
           content: {}
-      requestBody:
-        content:
-          application/json:
-            schema:
-              type: object
-              properties:
-                slug:
-                  type: string
-              required:
-              - slug
   "/news":
     get:
       summary: Get all News Articles
